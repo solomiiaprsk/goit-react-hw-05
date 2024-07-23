@@ -1,13 +1,25 @@
 .nav {
     display: flex;
     gap: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background-color: rgb(237, 236, 252);
+    padding-left: 36px;
+    
+    
 }
 
 .link {
     text-decoration: none;
     color: black;
+    padding: 6px;
+    
 }
 
 .active {
-    color: orangered;
+    color: white;
+    border-radius: 6px;
+    padding: 6px;
+    background-color: rgba(141, 162, 245, 0.734);
 }
+

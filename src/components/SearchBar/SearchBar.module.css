@@ -1,0 +1,23 @@
+.container {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 36px;
+
+}
+
+.form {
+    display: flex;
+        gap: 24px;
+}
+
+.input {
+    width: 200px;
+    border-radius: 6px;
+}
+
+.btn {
+    width: 160px;
+    border-radius: 6px;
+    background-color: rgb(111, 110, 110);
+    color: white;
+}
