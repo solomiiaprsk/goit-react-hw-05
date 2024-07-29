@@ -1,39 +1,48 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams, Outlet } from "react-router-dom";
 import { getMovieById } from "../movies-api";
+import MovieInfo from "../components/MovieInfo"
+import css from "./MovieDetailsPage.module.css"
+
 
 export default function MovieDetailsPage() {
-  const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
-  // loading
-  // error
+    const [movie, setMovie] = useState(null);
+    const { movie_id } = useParams();
 
-  useEffect(() => {
-    async function fetchMovie() {
-      try {
-        const data = await getMovieById(movieId);
-        setMovie(data);
-      } catch (error) {}
-    }
+    // loading
+    // error
 
-    fetchMovie();
-  }, [movieId]);
+    useEffect(() => {
+        async function fetchMovie() {
+            try {
+                const data = await getMovieById(movie_id);
+                setMovie(data);
+            } catch (error) {
+                console.error("Failed to fetch movie:", error);
+           
+            }
+        }
 
-  return (
-    <div>
-      <h2>Additional Information</h2>
-      {movie && <MovieInfo movie={movie} />}
+        fetchMovie();
+    }, [movie_id]);
+    
+    
 
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
+    return (
+        <div className={css.container}>
+            
+            {movie && <MovieInfo movie={movie} />}
 
-      <Outlet />
-    </div>
-  );
+            <ul>
+                <li>
+                    <NavLink to="cast">Cast </NavLink>
+                </li>
+                <li>
+                    <NavLink to="reviews">Reviews</NavLink>
+                </li>
+            </ul>
+
+            <Outlet />
+        </div>
+    );
 }
