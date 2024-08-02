@@ -1,0 +1,47 @@
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.item {
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+.item:hover {
+    background-color: #f1f1f1;
+}
+
+.name {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.text {
+    margin: 10px 0 0;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #666;
+}
+
+@media (min-width: 600px) {
+    .item {
+        padding: 20px;
+        margin: 15px 0;
+    }
+
+    .name {
+        font-size: 1.4em;
+    }
+
+    .text {
+        font-size: 1.1em;
+    }
+}

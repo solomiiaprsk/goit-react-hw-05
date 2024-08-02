@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMovies } from "../movies-api";
+import { getMovies, searchMovies } from "../movies-api";
 import { SearchForm } from "../components/SearchBar/SearchBar.jsx";
 
 export default function MoviesPage() {
@@ -12,14 +12,17 @@ export default function MoviesPage() {
       try {
         const data = await getMovies();
         setMovies(data);
-      } catch (error) {}
+      } catch (error) {
+        setError("Failed to fetch movies.");
+      }
     }
     fetchMovies();
       }, []);
    
-    const handleSearch = async () => {
-        try {
-            setMovies([]);
+    const handleSearch = async (query) => {
+      try {
+          const data = await searchMovies(query);
+            setMovies(data);
             console.log("movies");
             setMovies("");
     } catch (error) {
@@ -31,7 +34,7 @@ export default function MoviesPage() {
   return (
       <div>
       <SearchForm onSearch={handleSearch} />
-      <p>movie not found</p>
+      
     </div>
   );
-}
+};
