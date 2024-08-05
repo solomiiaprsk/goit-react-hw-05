@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useParams, Outlet } from "react-router-dom";
+import { NavLink, useParams, Outlet, useNavigate} from "react-router-dom";
 import { getMovieById } from "../movies-api";
 import MovieInfo from "../components/MovieInfo"
 import css from "./MovieDetailsPage.module.css"
@@ -8,6 +8,7 @@ import css from "./MovieDetailsPage.module.css"
 export default function MovieDetailsPage() {
     const [movie, setMovie] = useState(null);
     const { movie_id } = useParams();
+    const navigate = useNavigate(); 
 
     // loading
     // error
@@ -26,11 +27,15 @@ export default function MovieDetailsPage() {
         fetchMovie();
     }, [movie_id]);
     
-    
+     const handleGoBack = () => {
+        navigate(-1); 
+    };
 
     return (
         <div className={css.container}>
-            
+            <button onClick={handleGoBack} className={css.goBackBtn}>
+                Go Back
+            </button>
             {movie && <MovieInfo movie={movie} />}
 
             <ul>

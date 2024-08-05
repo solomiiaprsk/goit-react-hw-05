@@ -25,8 +25,8 @@ export const SearchForm = ({ onSearch }) => {
 
 
     return (
-        <div className={css.container}>
-            <form className={css.form} onSubmit={handleSubmit}>
+      <div className={css.container}>
+        <form className={css.form} onSubmit={handleSubmit}>
           <input type="text" name="topic" value={query}  onChange={(e) => setSearchParams({ query: e.target.value })}
            placeholder="Enter movie title..." className={css.input} /> 
             
