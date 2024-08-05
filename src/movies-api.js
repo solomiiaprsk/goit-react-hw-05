@@ -28,7 +28,7 @@ export const searchMovies = async (query) => {
         query: query,
       },
     });
-    return response.data;
+    return response.data.results;
 };
 
 export const getMovieCast = async (movie_id) => {

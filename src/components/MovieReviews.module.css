@@ -2,6 +2,7 @@
     list-style: none;
     padding: 0;
     margin: 20px 0;
+    max-width: 900px;
 }
 
 .item {
@@ -19,15 +20,12 @@
 
 .name {
     margin: 0;
-    font-size: 1.2em;
     font-weight: bold;
     color: #333;
 }
 
 .text {
     margin: 10px 0 0;
-    font-size: 1em;
-    line-height: 1.4;
     color: #666;
 }
 
@@ -37,11 +35,5 @@
         margin: 15px 0;
     }
 
-    .name {
-        font-size: 1.4em;
-    }
-
-    .text {
-        font-size: 1.1em;
-    }
+  
 }

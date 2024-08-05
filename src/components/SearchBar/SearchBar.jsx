@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 
 export const SearchForm = ({ onSearch }) => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const query = searchParams.get("query") || "";
+  const query = searchParams.get("");
 
     const handleSubmit = (evt) => {
      evt.preventDefault();
@@ -13,6 +13,7 @@ export const SearchForm = ({ onSearch }) => {
      const topic = form.elements.topic.value.trim();
       if (topic === "") {
         alert("Please enter search term!");
+        form.reset();
         return;
       };
       onSearch(topic);
@@ -26,15 +27,17 @@ export const SearchForm = ({ onSearch }) => {
     return (
         <div className={css.container}>
             <form className={css.form} onSubmit={handleSubmit}>
-          <input type="text" name="topic" value={query}
-        onChange={(e) => setSearchParams({ query: e.target.value })}
-           placeholder="Enter movie title..." className={css.input}  />
-                <button type="submit" className={css.btn}>Search</button>
+          <input type="text" name="topic" value={query}  onChange={(e) => setSearchParams({ query: e.target.value })}
+           placeholder="Enter movie title..." className={css.input} /> 
+            
+          <button type="submit" className={css.btn}>Search</button>
               
         </form>
        
+         
         </div>
 
- );
+    );
+  
 };
 
