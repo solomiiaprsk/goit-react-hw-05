@@ -8,7 +8,7 @@ export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState("");
    
   
 useEffect(() => {
