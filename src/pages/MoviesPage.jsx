@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { searchMovies } from "../movies-api";
 import { SearchForm } from "../components/SearchBar/SearchBar.jsx";
 import css from "./MoviesPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
+  const location = useLocation();
    
   
 useEffect(() => {
@@ -47,7 +48,7 @@ useEffect(() => {
           {movies.map((movie) => (
             <li key={movie.id}>
               <p><strong> {movie.title} </strong></p>
-              <Link to={`/movies/${movie.id}`}>Details</Link>
+              <Link to={`/movies/${movie.id}`} state={location}>Details</Link>
 
             </li>
           ))}

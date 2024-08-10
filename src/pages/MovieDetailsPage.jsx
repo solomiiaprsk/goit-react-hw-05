@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { NavLink, useParams, Outlet, useNavigate, useLocation, Link} from "react-router-dom";
 import { getMovieById } from "../movies-api";
 import MovieInfo from "../components/MovieInfo"
@@ -10,6 +10,8 @@ export default function MovieDetailsPage() {
     const { movie_id } = useParams();
     const navigate = useNavigate(); 
     const location = useLocation();
+    const backLinkRef = useRef(location.state ?? "/movies");
+    
 
     // loading
     // error
@@ -32,7 +34,7 @@ export default function MovieDetailsPage() {
 
     return (
         <div className={css.container}>
-            <Link to={location.state}>
+            <Link to={backLinkRef.current}>
                 Go Back
             </Link>
             {movie && <MovieInfo movie={movie} />}
