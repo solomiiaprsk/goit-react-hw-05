@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { searchMovies } from "../movies-api";
 import { SearchForm } from "../components/SearchBar/SearchBar.jsx";
 import css from "./MoviesPage.module.css";
@@ -8,7 +9,8 @@ export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState("");
+const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
   const location = useLocation();
    
   
@@ -34,7 +36,7 @@ useEffect(() => {
 }, [query]);
   
    const handleSearch = async (query) => {
-    setQuery(query);
+     setSearchParams({ query });
   };
   
 
